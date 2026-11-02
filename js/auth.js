@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (button) button.disabled = true;
 
         try {
-            const response = await fetch(endpoint, {
+            const response = await window.uhelpFetch(endpoint, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(payload),

@@ -72,7 +72,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             saveButton.addEventListener('click', async () => {
                 saveButton.disabled = true;
                 try {
-                    const response = await fetch(`/api/saved-programmes/${programme.id}`, {
+                    const response = await window.uhelpFetch(`/api/saved-programmes/${programme.id}`, {
                         method: 'POST',
                     });
                     const data = await response.json();
@@ -129,7 +129,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     searchStatus.textContent = 'Loading programmes...';
 
     try {
-        const response = await fetch('/api/programmes');
+        const response = await window.uhelpFetch('/api/programmes');
         if (!response.ok) {
             throw new Error(`Programme request failed (${response.status}).`);
         }

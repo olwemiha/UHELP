@@ -20,10 +20,10 @@ document.addEventListener('DOMContentLoaded', async () => {
         grid.replaceChildren();
 
         try {
-            const url = new URL('/api/institutions', window.location.origin);
+            const url = window.uhelpApiUrl('/api/institutions');
             if (query) url.searchParams.set('q', query);
 
-            const response = await fetch(url);
+            const response = await window.uhelpFetch(url);
             if (!response.ok) {
                 throw new Error(`Institution request failed (${response.status}).`);
             }

@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     if (!(grid instanceof HTMLElement)) return;
 
     try {
-        const response = await fetch('/api/bursaries');
+        const response = await window.uhelpFetch('/api/bursaries');
         if (!response.ok) {
             throw new Error(`Bursary request failed (${response.status}).`);
         }

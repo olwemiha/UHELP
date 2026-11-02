@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }));
 
         try {
-            const response = await fetch('/api/tools/aps', {
+            const response = await window.uhelpFetch('/api/tools/aps', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ subjects }),

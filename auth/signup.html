@@ -151,10 +151,9 @@
     submitBtn.disabled = true;
 
     try {
-      const res = await fetch('http://127.0.0.1:8000/api/auth/register', {
+      const res = await window.uhelpFetch('/api/auth/register', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        credentials: 'include', // CRITICAL: Required for HttpOnly cookies
         body: JSON.stringify({ name: name, email: email, password: password })
       });
 
@@ -163,9 +162,6 @@
       if (res.ok) {
         statusText.innerText = "Account created! Redirecting...";
         statusText.style.color = "var(--green)";
-        // Save user data for display purposes in Dashboard
-        localStorage.setItem('eduaccess_user', JSON.stringify(data.user));
-        
         setTimeout(() => {
           window.location.href = "../dashboard.html";
         }, 800);
@@ -190,10 +186,9 @@
 
     try {
       // We use the same Google endpoint, as it will create the user if they don't exist
-      const res = await fetch('http://127.0.0.1:8000/api/auth/google', {
+      const res = await window.uhelpFetch('/api/auth/google', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        credentials: 'include', // CRITICAL
         body: JSON.stringify({ token: response.credential })
       });
 
@@ -202,8 +197,6 @@
       if (res.ok) {
         statusText.innerText = `Welcome, ${data.user.name}! Redirecting...`;
         statusText.style.color = "var(--green)";
-        localStorage.setItem('eduaccess_user', JSON.stringify(data.user));
-        
         setTimeout(() => {
           window.location.href = "../dashboard.html";
         }, 800);

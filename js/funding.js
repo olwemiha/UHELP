@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
         results.replaceChildren();
 
         try {
-            const response = await fetch(`/api/funding?q=${encodeURIComponent(query)}`);
+            const response = await window.uhelpFetch(`/api/funding?q=${encodeURIComponent(query)}`);
             const data = await response.json();
             if (!response.ok || !Array.isArray(data)) {
                 const detail = Array.isArray(data.detail)

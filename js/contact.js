@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         try {
             const values = new FormData(form);
-            const response = await fetch('/api/contact', {
+            const response = await window.uhelpFetch('/api/contact', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({

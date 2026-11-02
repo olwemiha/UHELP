@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     const programmes = new Map();
     try {
-        const response = await fetch('/api/programmes');
+        const response = await window.uhelpFetch('/api/programmes');
         const data = await response.json();
         if (!response.ok || !Array.isArray(data)) {
             throw new Error('The programmes list could not be loaded.');
@@ -59,7 +59,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         result.textContent = 'Checking score...';
 
         try {
-            const response = await fetch('/api/tools/eligibility', {
+            const response = await window.uhelpFetch('/api/tools/eligibility', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({

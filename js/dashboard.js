@@ -16,9 +16,9 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     try {
         const [profileResponse, savedResponse, bursaryResponse] = await Promise.all([
-            fetch('/api/auth/me'),
-            fetch('/api/saved-programmes'),
-            fetch('/api/bursaries'),
+            window.uhelpFetch('/api/auth/me'),
+            window.uhelpFetch('/api/saved-programmes'),
+            window.uhelpFetch('/api/bursaries'),
         ]);
         if (profileResponse.status === 401 || savedResponse.status === 401) {
             window.location.assign('/auth/login.html');
@@ -73,7 +73,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             remove.addEventListener('click', async () => {
                 remove.disabled = true;
                 try {
-                    const response = await fetch(`/api/saved-programmes/${programme.id}`, {
+                    const response = await window.uhelpFetch(`/api/saved-programmes/${programme.id}`, {
                         method: 'DELETE',
                     });
                     if (!response.ok) throw new Error('Could not remove the saved programme.');

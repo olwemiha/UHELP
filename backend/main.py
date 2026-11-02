@@ -226,14 +226,22 @@ def _get_session_user_id(token: str | None) -> int | None:
         return None
     return user_id
 
-def _set_session_cookie(response: Response, user: models.User) -> None:
+def _session_cookie_options(request: Request) -> tuple[bool, str]:
+    origin = request.headers.get("origin", "").rstrip("/")
+    is_cross_origin = origin in cors_origins and origin != str(request.base_url).rstrip("/")
+    secure = is_cross_origin or os.environ.get("EDUACCESS_COOKIE_SECURE", "").lower() == "true"
+    return secure, "none" if is_cross_origin else "lax"
+
+
+def _set_session_cookie(response: Response, user: models.User, request: Request) -> None:
+    secure, samesite = _session_cookie_options(request)
     response.set_cookie(
         SESSION_COOKIE,
         _create_session_token(user.id),
         max_age=SESSION_MAX_AGE,
         httponly=True,
-        secure=os.environ.get("EDUACCESS_COOKIE_SECURE", "").lower() == "true",
-        samesite="lax",
+        secure=secure,
+        samesite=samesite,
         path="/",
     )
 
@@ -359,6 +367,7 @@ def get_programmes(
 
 @app.post("/api/auth/register", status_code=status.HTTP_201_CREATED)
 def register_user(
+    request: Request,
     payload: RegisterRequest,
     response: Response,
     db: DbSession,
@@ -373,7 +382,7 @@ def register_user(
     db.add(user)
     db.commit()
     db.refresh(user)
-    _set_session_cookie(response, user)
+    _set_session_cookie(response, user, request)
     return {"user": _user_payload(user)}
 
 @app.post("/api/auth/login")
@@ -382,11 +391,11 @@ def login_user(request: Request, payload: LoginRequest, response: Response, db: 
     user = db.query(models.User).filter_by(email=payload.email).first()
     if user is None or not _verify_password(payload.password, user.password_hash):
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Email or password is incorrect.")
-    _set_session_cookie(response, user)
+    _set_session_cookie(response, user, request)
     return {"user": _user_payload(user)}
 
 @app.post("/api/auth/google")
-def google_auth(payload: GoogleAuthRequest, response: Response, db: DbSession):
+def google_auth(request: Request, payload: GoogleAuthRequest, response: Response, db: DbSession):
     try:
         # Verify the token with Google
         id_info = id_token.verify_oauth2_token(
@@ -412,7 +421,7 @@ def google_auth(payload: GoogleAuthRequest, response: Response, db: DbSession):
         db.commit()
         db.refresh(user)
 
-    _set_session_cookie(response, user)
+    _set_session_cookie(response, user, request)
     return {"user": _user_payload(user)}
 
 @app.get("/api/auth/me")
@@ -420,13 +429,14 @@ def current_user_profile(user: CurrentUser):
     return {"user": _user_payload(user)}
 
 @app.post("/api/auth/logout", status_code=status.HTTP_204_NO_CONTENT)
-def logout_user(response: Response):
+def logout_user(request: Request, response: Response):
+    secure, samesite = _session_cookie_options(request)
     response.delete_cookie(
         SESSION_COOKIE,
         path="/",
         httponly=True,
-        secure=os.environ.get("EDUACCESS_COOKIE_SECURE", "").lower() == "true",
-        samesite="lax",
+        secure=secure,
+        samesite=samesite,
     )
 
 # --- TOOLS & CONTACT ---
