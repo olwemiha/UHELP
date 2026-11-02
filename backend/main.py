@@ -141,11 +141,21 @@ app = FastAPI(title="UHELP API", lifespan=lifespan)
 
 # --- SECURITY MIDDLEWARE ---
 
-# 1. CORS
+cors_origins = {
+    origin.strip().rstrip("/")
+    for origin in os.environ.get(
+        "CORS_ORIGINS",
+        "https://uni-helpsa.netlify.app,"
+        "http://127.0.0.1:5500,http://localhost:5500,"
+        "http://127.0.0.1:8001,http://localhost:8001",
+    ).split(",")
+    if origin.strip()
+}
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://127.0.0.1:5500", "http://localhost:5500", "http://127.0.0.1:8001", "http://localhost:8001"],
-    allow_credentials=True, # CRITICAL for cookies
+    allow_origins=sorted(cors_origins),
+    allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
