@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Contact — UHELP</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+<style>
+  /* Custom styling for the contact form */
+  .contact-container {
+    max-width: 600px;
+    background: #fff;
+    padding: 40px;
+    border-radius: 8px;
+    border: 1px solid #e0e0e0;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+  }
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  .contact-form label {
+    font-weight: 600;
+    color: var(--dark);
+    margin-bottom: -5px;
+    font-size: 14px;
+  }
+  .contact-form input, 
+  .contact-form textarea {
+    width: 100%;
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-family: inherit;
+    font-size: 15px;
+    outline: none;
+    transition: border 0.3s;
+  }
+  .contact-form input:focus, 
+  .contact-form textarea:focus {
+    border-color: var(--green);
+  }
+</style>
+</head>
+<body>
+
+<header class="site-nav">
+  <a href="index.html" class="brand">UHELP</a>
+  <nav class="nav-links" id="nav-links">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="programmes.html">Programmes</a>
+    <a href="institutions.html">Institutions</a>
+    <a href="services/aps-calculator.html">Our Services</a>
+    <a href="bursaries.html">Bursaries</a>
+    <a href="contact.html" class="active">Contact</a>
+  </nav>
+  <div class="nav-actions">
+    <a href="auth/login.html" class="btn-login">Log In</a>
+    <a href="auth/signup.html" class="btn-primary">Get Started</a>
+    <button class="menu-toggle" id="menu-toggle">☰</button>
+  </div>
+</header>
+
+<section class="page-padding">
+  <div class="container">
+    <div class="section-header">
+      <h2>Contact Us</h2>
+      <p>Have a question? We are here to help.</p>
+    </div>
+    
+    <div class="contact-container">
+      <form id="contact-form" class="contact-form">
+        <label for="contact-name">Your name</label>
+        <input id="contact-name" name="name" type="text" autocomplete="name" minlength="2" maxlength="100" required placeholder="e.g. Thandi Dlamini">
+
+        <label for="contact-email">Your email</label>
+        <input id="contact-email" name="email" type="email" autocomplete="email" required placeholder="thandi@example.com">
+
+        <label for="contact-message">Your message</label>
+        <textarea id="contact-message" name="message" rows="5" minlength="10" maxlength="5000" required placeholder="How can we help you?"></textarea>
+
+        <button type="submit" class="btn-primary" style="align-self: flex-start; padding: 15px 30px; margin-top: 10px;">Send Message</button>
+        
+        <p id="contact-status" role="status" aria-live="polite" style="font-weight: 600; color: var(--green); margin-top: 10px;"></p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-bottom">
+      <span>© 2026 UHELP. All rights reserved.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+<script src="js/contact.js"></script>
+</body>
+</html>

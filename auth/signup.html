@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Get Started — UHELP</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/styles.css">
+<style>
+  /* Styles specifically for the Auth Card */
+  .auth-container { 
+    max-width: 450px; 
+    margin: 0 auto; 
+    background: #fff; 
+    padding: 40px; 
+    border: 1px solid #e0e0e0; 
+    border-radius: 8px; 
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05); 
+  }
+  .auth-header { text-align: center; margin-bottom: 30px; }
+  .auth-header h2 { font-size: 28px; font-weight: 800; color: #1a1a1a; margin-bottom: 8px; text-transform: uppercase; }
+  .auth-header p { color: #666; font-size: 14px; }
+  
+  /* Divider */
+  .divider { display: flex; align-items: center; text-align: center; margin: 20px 0; color: #999; font-size: 13px; }
+  .divider::before, .divider::after { content: ''; flex: 1; border-bottom: 1px solid #eee; }
+  .divider::before { margin-right: 15px; }
+  .divider::after { margin-left: 15px; }
+  
+  /* Form Inputs */
+  .auth-form { display: flex; flex-direction: column; gap: 15px; text-align: left; }
+  .auth-form label { font-weight: 600; font-size: 14px; color: #333; margin-bottom: -5px; }
+  .auth-form input { 
+    padding: 15px; border: 1px solid #ccc; font-family: inherit; font-size: 15px; 
+    outline: none; transition: border 0.3s; border-radius: 4px;
+  }
+  .auth-form input:focus { border-color: var(--green); }
+  
+  /* Auth Footer Link */
+  .auth-footer { text-align: center; margin-top: 25px; font-size: 14px; color: #666; }
+  .auth-footer a { color: var(--green); font-weight: 600; text-decoration: none; }
+  .auth-footer a:hover { text-decoration: underline; }
+
+  /* Force Google button to be full width */
+  .g_id_signin { display: flex; justify-content: center; width: 100%; }
+  .g_id_signin > div { width: 100% !important; }
+</style>
+</head>
+<body>
+
+<header class="site-nav">
+  <a href="../index.html" class="brand">UHELP</a>
+  <nav class="nav-links" id="nav-links">
+    <a href="../index.html">Home</a>
+    <a href="../about.html">About</a>
+    <a href="../programmes.html">Programmes</a>
+    <a href="../institutions.html">Institutions</a>
+    <a href="../services/aps-calculator.html">Our Services</a>
+    <a href="../bursaries.html">Bursaries</a>
+    <a href="../contact.html">Contact</a>
+  </nav>
+  <div class="nav-actions">
+    <a href="login.html" class="btn-login">Log In</a>
+    <a href="signup.html" class="btn-primary active">Get Started</a>
+    <button class="menu-toggle" id="menu-toggle">☰</button>
+  </div>
+</header>
+
+<section class="page-padding" style="background: #f4f6f8; padding-top: 60px;">
+  <div class="container">
+    
+    <div class="auth-container">
+      <div class="auth-header">
+        <h2>Create Account</h2>
+        <p>Join UHELP to save programmes and plan your future.</p>
+      </div>
+      
+      <!-- 1. GOOGLE SIGNUP SCRIPT -->
+      <script src="https://accounts.google.com/gsi/client" async defer></script>
+      
+      <!-- 2. GOOGLE CONFIGURATION (Replace with your actual Client ID) -->
+      <div id="g_id_onload"
+           data-client_id="YOUR_GOOGLE_CLIENT_ID.apps.googleusercontent.com"
+           data-context="signup"
+           data-ux_mode="popup"
+           data-auto_prompt="false"
+           data-callback="handleGoogleSignup">
+      </div>
+
+      <!-- 3. GOOGLE BUTTON -->
+      <div class="g_id_signin"
+           data-type="standard"
+           data-shape="rectangular"
+           data-theme="outline"
+           data-text="signup_with"
+           data-size="large"
+           data-logo_alignment="left"
+           style="width: 100%; margin-bottom: 5px;">
+      </div>
+
+      <div class="divider">or sign up with email</div>
+      
+      <!-- 4. EMAIL SIGNUP FORM -->
+      <form class="auth-form" id="signup-form">
+        <label for="signup-name">Full name</label>
+        <input id="signup-name" name="name" type="text" autocomplete="name" minlength="2" maxlength="100" required>
+        
+        <label for="signup-email">Email address</label>
+        <input id="signup-email" name="email" type="email" autocomplete="email" required>
+        
+        <label for="signup-password">Create password</label>
+        <input id="signup-password" name="password" type="password" autocomplete="new-password" minlength="8" required>
+        
+        <button type="submit" class="btn-primary" style="margin-top: 10px; padding: 15px; font-size: 16px;">Sign Up</button>
+        <p id="auth-status" role="status" aria-live="polite" style="font-weight: 600; text-align: center; margin-top: 10px;"></p>
+      </form>
+
+      <div class="auth-footer">
+        Already have an account? <a href="login.html">Log in</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-bottom">
+      <span>© 2026 UHELP. All rights reserved.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="../js/main.js"></script>
+<script>
+  // --- EMAIL SIGNUP LOGIC ---
+  document.getElementById('signup-form').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    
+    const name = document.getElementById('signup-name').value;
+    const email = document.getElementById('signup-email').value;
+    const password = document.getElementById('signup-password').value;
+    const statusText = document.getElementById('auth-status');
+    const submitBtn = this.querySelector('button[type="submit"]');
+
+    // Loading state
+    statusText.innerText = "Creating account...";
+    statusText.style.color = "#666";
+    submitBtn.disabled = true;
+
+    try {
+      const res = await fetch('http://127.0.0.1:8000/api/auth/register', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        credentials: 'include', // CRITICAL: Required for HttpOnly cookies
+        body: JSON.stringify({ name: name, email: email, password: password })
+      });
+
+      const data = await res.json();
+
+      if (res.ok) {
+        statusText.innerText = "Account created! Redirecting...";
+        statusText.style.color = "var(--green)";
+        // Save user data for display purposes in Dashboard
+        localStorage.setItem('eduaccess_user', JSON.stringify(data.user));
+        
+        setTimeout(() => {
+          window.location.href = "../dashboard.html";
+        }, 800);
+      } else {
+        statusText.innerText = data.detail || "Signup failed. Please try again.";
+        statusText.style.color = "red";
+        submitBtn.disabled = false;
+      }
+    } catch (error) {
+      console.error(error);
+      statusText.innerText = "Cannot connect to server. Is the backend running?";
+      statusText.style.color = "red";
+      submitBtn.disabled = false;
+    }
+  });
+
+  // --- GOOGLE SIGNUP LOGIC ---
+  async function handleGoogleSignup(response) {
+    const statusText = document.getElementById('auth-status');
+    statusText.innerText = "Verifying Google account...";
+    statusText.style.color = "#666";
+
+    try {
+      // We use the same Google endpoint, as it will create the user if they don't exist
+      const res = await fetch('http://127.0.0.1:8000/api/auth/google', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        credentials: 'include', // CRITICAL
+        body: JSON.stringify({ token: response.credential })
+      });
+
+      const data = await res.json();
+
+      if (res.ok) {
+        statusText.innerText = `Welcome, ${data.user.name}! Redirecting...`;
+        statusText.style.color = "var(--green)";
+        localStorage.setItem('eduaccess_user', JSON.stringify(data.user));
+        
+        setTimeout(() => {
+          window.location.href = "../dashboard.html";
+        }, 800);
+      } else {
+        statusText.innerText = data.detail || "Google signup failed.";
+        statusText.style.color = "red";
+      }
+    } catch (error) {
+      console.error(error);
+      statusText.innerText = "Cannot connect to server. Is the backend running?";
+      statusText.style.color = "red";
+    }
+  }
+</script>
+</body>
+</html>

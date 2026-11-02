@@ -1,0 +1,263 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>UHELP — Your future starts with the right opportunity</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="home-page">
+
+<section class="hero-section">
+  <header class="site-nav">
+    <a href="index.html" class="brand">UHELP</a>
+    <nav class="nav-links" id="nav-links">
+      <a href="index.html" class="active">Home</a>
+      <a href="about.html">About</a>
+      <a href="programmes.html">Programmes</a>
+      <a href="institutions.html">Institutions</a>
+      <a href="services/aps-calculator.html">Our Services</a>
+      <a href="bursaries.html">Bursaries</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <div class="nav-actions">
+      <!-- LANGUAGE TOGGLE ADDED HERE -->
+      <button onclick="toggleLanguage()" style="background: transparent; border: 1px solid rgba(255,255,255,0.5); color: #fff; padding: 8px 12px; border-radius: 4px; cursor: pointer; font-weight: 600; font-size: 13px; margin-right: 10px;" id="lang-toggle">EN | ZU</button>
+      
+      <a href="auth/login.html" class="btn-login">Log In</a>
+      <a href="auth/signup.html" class="btn-primary">Get Started</a>
+      <button class="menu-toggle" id="menu-toggle">☰</button>
+    </div>
+  </header>
+
+  <div class="hero-content">
+    <span class="hero-eyebrow">Get Started With UHELP</span>
+    <h1 id="hero-headline">Your Future Starts With the Right Opportunity.</h1>
+    <p>Discover universities, explore qualifications, check admission requirements and plan your next step. All in one place for South African students.</p>
+    
+    <a href="about.html" class="btn-outline-hero">Read More</a>
+
+    <div class="hero-search-container">
+      <form class="quick-search" action="programmes.html" method="GET">
+        <input type="text" name="q" placeholder="Search a qualification, institution or career...">
+        <button type="submit">Search</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<section class="programmes-section">
+  <div class="container">
+    <div class="section-header">
+      <h2>Explore Programmes</h2>
+      <p>Find the right qualification to match your goals and APS score.</p>
+    </div>
+    
+    <div class="grid-3">
+      <div class="programme-card">
+        <div class="card-top">
+          <span class="card-type">University</span>
+          <h3 class="card-title">BCom Accounting</h3>
+          <div class="card-inst">University of Cape Town · 3 Years</div>
+        </div>
+        <div class="card-bottom">
+          <p class="card-desc">Prepare for a career in accounting, auditing or finance. Accredited by SAICA with strong graduate prospects.</p>
+          <a href="programmes.html" class="card-link">View Requirements →</a>
+        </div>
+      </div>
+
+      <div class="programme-card">
+        <div class="card-top">
+          <span class="card-type">TVET College</span>
+          <h3 class="card-title">N4-N6 Financial Management</h3>
+          <div class="card-inst">Tshwane South TVET · 18 Months</div>
+        </div>
+        <div class="card-bottom">
+          <p class="card-desc">A highly practical route into financial administration, with clear articulation options into university diplomas.</p>
+          <a href="programmes.html" class="card-link">View Requirements →</a>
+        </div>
+      </div>
+
+      <div class="programme-card">
+        <div class="card-top">
+          <span class="card-type">University</span>
+          <h3 class="card-title">BSc Computer Science</h3>
+          <div class="card-inst">University of the Witwatersrand · 3 Years</div>
+        </div>
+        <div class="card-bottom">
+          <p class="card-desc">A rigorous foundation for software engineering, AI, and data science careers in South Africa's growing tech sector.</p>
+          <a href="programmes.html" class="card-link">View Requirements →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="services-section">
+  <div class="container">
+    <div class="section-header">
+      <h2>Our Services</h2>
+      <p>Tools to help you plan your next step.</p>
+    </div>
+    
+    <div class="grid-4">
+      <div class="service-box">
+        <h3>APS Calculator</h3>
+        <p>Estimate your Admission Point Score from your Grade 12 marks in seconds.</p>
+        <a href="services/aps-calculator.html">Open Tool →</a>
+      </div>
+      <div class="service-box">
+        <h3>Eligibility Checker</h3>
+        <p>Compare your score with listed programme minimums.</p>
+        <a href="services/eligibility.html">Check Now →</a>
+      </div>
+      <div class="service-box">
+        <h3>Funding Finder</h3>
+        <p>Search listed funding opportunities by study field or provider.</p>
+        <a href="services/funding-finder.html">Find Funding →</a>
+      </div>
+      <div class="service-box">
+        <h3>Deadline Tracker</h3>
+        <p>View listed bursaries and their published closing dates.</p>
+        <a href="bursaries.html">View Calendar →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <a href="index.html" class="brand" style="color:#fff; display:inline-block; margin-bottom:15px;">UHELP</a>
+        <p>Helping South African matriculants navigate the journey from school to higher education. Free for learners, always.</p>
+      </div>
+      <div>
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="programmes.html">Programmes</a></li>
+          <li><a href="institutions.html">Institutions</a></li>
+          <li><a href="bursaries.html">Bursaries</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Services</h4>
+        <ul>
+          <li><a href="services/aps-calculator.html">APS Calculator</a></li>
+          <li><a href="services/eligibility.html">Eligibility Checker</a></li>
+          <li><a href="services/funding-finder.html">Funding Finder</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <ul>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="auth/login.html">Log In</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 UHELP. All rights reserved.</span>
+      <span>Supporting South African learners</span>
+    </div>
+  </div>
+</footer>
+
+<!-- === CHATBOT WIDGET === -->
+<button id="chat-btn" style="position: fixed; bottom: 20px; right: 20px; background: #0F766E; color: white; border: none; border-radius: 50%; width: 60px; height: 60px; font-size: 24px; cursor: pointer; box-shadow: 0 4px 12px rgba(0,0,0,0.3); z-index: 1000;">💬</button>
+
+<div id="chat-window" style="display: none; position: fixed; bottom: 90px; right: 20px; width: 350px; max-width: calc(100vw - 40px); background: white; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.2); border: 1px solid #eee; overflow: hidden; z-index: 1000;">
+    <div style="background: #0F766E; padding: 15px; color: white; font-weight: 600; display: flex; justify-content: space-between; align-items: center;">
+        <span>Ask UHELP</span>
+        <button id="close-chat" style="background: transparent; border: none; color: white; font-size: 20px; cursor: pointer;">✕</button>
+    </div>
+    <div style="padding: 20px; height: 250px; overflow-y: auto; display: flex; flex-direction: column; gap: 10px;" id="chat-messages">
+        <div style="background: #f4f6f8; padding: 10px; border-radius: 8px; font-size: 14px; align-self: flex-start; max-width: 80%;">
+            Hi! I'm UHELP. Ask me anything about your options.
+        </div>
+    </div>
+    <div style="display: flex; border-top: 1px solid #eee; padding: 10px;">
+        <input type="text" id="chat-input" placeholder="Ask in English or isiZulu..." style="flex: 1; border: none; outline: none; padding: 8px; font-family: inherit;">
+        <button id="send-chat" type="button" style="background: #0F766E; color: white; border: none; padding: 8px 15px; border-radius: 4px; cursor: pointer; font-weight: 600;">Send</button>
+    </div>
+</div>
+
+<script src="js/main.js"></script>
+
+<script>
+    // === LANGUAGE TOGGLE LOGIC ===
+    let isZulu = false;
+    function toggleLanguage() {
+        isZulu = !isZulu;
+        document.getElementById('lang-toggle').innerText = isZulu ? 'ZU | EN' : 'EN | ZU';
+        
+        const headline = document.getElementById('hero-headline');
+        if (headline) {
+            headline.innerText = isZulu 
+                ? "Ikusasa Lakho Liqala Ngethuba Elifanele." 
+                : "Your Future Starts With the Right Opportunity.";
+        }
+    }
+
+    // === CHATBOT LOGIC ===
+    document.getElementById('chat-btn').addEventListener('click', () => {
+        const win = document.getElementById('chat-window');
+        win.style.display = win.style.display === 'none' ? 'block' : 'none';
+    });
+
+    document.getElementById('close-chat').addEventListener('click', () => {
+        document.getElementById('chat-window').style.display = 'none';
+    });
+
+    const chatInput = document.getElementById('chat-input');
+    const chatMessages = document.getElementById('chat-messages');
+    const appendChatMessage = (text, role) => {
+        const message = document.createElement('div');
+        message.className = `chat-message chat-message-${role}`;
+        message.textContent = text;
+        chatMessages.append(message);
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+    };
+
+    function sendChat() {
+        const text = chatInput.value.trim();
+        if (!text) return;
+
+        appendChatMessage(text, 'user');
+        chatInput.value = '';
+
+        setTimeout(() => {
+            let response = "I'm not sure about that. Try asking about APS scores, NSFAS, or TVET colleges.";
+            const lowerText = text.toLowerCase();
+            
+            if (lowerText.includes('aps') || lowerText.includes('score')) {
+                response = "Your APS score is calculated using your top 6 subjects (excluding Life Orientation). Use our APS Calculator on the Services page to check yours!";
+            } else if (lowerText.includes('nsfas') || lowerText.includes('funding') || lowerText.includes('bursary')) {
+                response = "NSFAS covers tuition, accommodation and a stipend. There are also many private bursaries available. Check our Bursaries page for deadlines.";
+            } else if (lowerText.includes('tvet') || lowerText.includes('college')) {
+                response = "TVET colleges offer practical, career-focused qualifications. Many do not require an APS score — just a Grade 9 or Grade 12 pass!";
+            } else if (lowerText.includes('qualify') || lowerText.includes('eligible')) {
+                response = "You can use our Eligibility Checker to see which programmes you qualify for based on your APS score. Try it out!";
+            } else if (lowerText.includes('isiZulu') || lowerText.includes('zulu')) {
+                response = "Yebo! Ngingakusiza ngezifundo zakho. (Yes! I can help you with your studies.)";
+            } else if (lowerText.includes('hello') || lowerText.includes('hi')) {
+                response = "Hello! 👋 How can I help you plan your next step today?";
+            } else if (lowerText.includes('plan b') || lowerText.includes('miss')) {
+                response = "If your score falls short, explore extended programmes, TVET qualifications, higher certificates, or rewriting subjects.";
+            }
+
+            appendChatMessage(response, 'assistant');
+        }, 800);
+    }
+
+    chatInput.addEventListener('keydown', (event) => {
+        if (event.key === 'Enter') sendChat();
+    });
+    document.getElementById('send-chat').addEventListener('click', sendChat);
+</script>
+</body>
+</html>

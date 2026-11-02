@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Programmes — UHELP</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<header class="site-nav">
+  <a href="index.html" class="brand">UHELP</a>
+  <nav class="nav-links" id="nav-links">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="programmes.html" class="active">Programmes</a>
+    <a href="institutions.html">Institutions</a>
+    <a href="services/aps-calculator.html">Our Services</a>
+    <a href="bursaries.html">Bursaries</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+  <div class="nav-actions">
+    <a href="auth/login.html" class="btn-login">Log In</a>
+    <a href="auth/signup.html" class="btn-primary">Get Started</a>
+    <button class="menu-toggle" id="menu-toggle">☰</button>
+  </div>
+</header>
+
+<section class="page-padding">
+  <div class="container">
+    <div class="section-header">
+      <h2>All Programmes</h2>
+      <p>Showing all available qualifications across South Africa.</p>
+    </div>
+
+    <form class="programme-search" action="programmes.html" method="get" style="margin-bottom: 40px;">
+      <div class="quick-search">
+        <input id="programme-query" type="search" name="q" placeholder="Search a qualification, institution or subject..." required>
+        <button type="submit">Search</button>
+      </div>
+      <p id="programme-search-status" aria-live="polite" style="margin-top: 10px; font-size: 14px; color: #666;"></p>
+    </form>
+    
+    <!-- The JavaScript will inject all the cards inside this div -->
+    <div class="grid-3" id="programme-list">
+        <!-- Empty on purpose! JS will fill it. -->
+    </div>
+
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-bottom">
+      <span>© 2026 UHELP. All rights reserved.</span>
+    </div>
+  </div>
+</footer>
+<script src="js/main.js"></script>
+<script src="js/search.js"></script>
+</body>
+</html>

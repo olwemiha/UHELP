@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>My Dashboard — UHELP</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+<style>
+  .dash-grid { display: grid; grid-template-columns: 1fr 2fr; gap: 40px; margin-top: 40px; }
+  .profile-card, .content-card { background: #fff; padding: 30px; border: 1px solid #e0e0e0; border-radius: 8px; }
+  .profile-card { text-align: center; height: fit-content; }
+  .profile-avatar { width: 80px; height: 80px; border-radius: 50%; background: var(--green); color: #fff; display: grid; place-items: center; font-size: 32px; font-weight: 800; margin: 0 auto 20px; }
+  .profile-card h3 { font-size: 22px; color: var(--dark); margin-bottom: 5px; }
+  .profile-card p { color: var(--gray); font-size: 14px; margin-bottom: 0; }
+  .content-card { margin-bottom: 30px; }
+  .content-card h2 { font-size: 20px; font-weight: 800; color: var(--dark); margin-bottom: 20px; text-transform: uppercase; }
+  .dashboard-funding-list { display: flex; flex-direction: column; gap: 10px; }
+  .dashboard-funding-item { padding: 12px; background: #f9f9f9; border-radius: 6px; border-left: 3px solid var(--green); display: flex; justify-content: space-between; align-items: center; gap: 16px; }
+  .dashboard-funding-item div { display: grid; gap: 4px; }
+  .dashboard-funding-item strong { font-size: 14px; color: var(--dark); }
+  .dashboard-funding-item span { font-size: 12px; color: var(--gray); }
+  .dashboard-funding-item a { color: var(--green); font-size: 12px; font-weight: 600; }
+  @media (max-width: 768px) {
+    .dash-grid { grid-template-columns: 1fr; gap: 24px; }
+    .content-card { padding: 20px; }
+  }
+</style>
+</head>
+<body>
+<header class="site-nav">
+  <a href="index.html" class="brand">UHELP</a>
+  <nav class="nav-links" id="nav-links">
+    <a href="index.html">Home</a>
+    <a href="programmes.html">Programmes</a>
+    <a href="institutions.html">Institutions</a>
+    <a href="bursaries.html">Bursaries</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+  <div class="nav-actions">
+    <a href="auth/login.html" class="btn-login">Log In</a>
+    <a href="auth/signup.html" class="btn-primary">Get Started</a>
+    <button class="menu-toggle" id="menu-toggle" type="button" aria-label="Toggle navigation">☰</button>
+  </div>
+</header>
+
+<main class="page-padding">
+  <div class="container">
+    <div class="section-header">
+      <h1 id="dashboard-heading">My Dashboard</h1>
+      <p id="dashboard-status" role="status" aria-live="polite">Loading your account...</p>
+    </div>
+    <div class="dash-grid">
+      <section class="profile-card" aria-label="Account profile">
+        <div class="profile-avatar" id="user-initial" aria-hidden="true">S</div>
+        <h2 id="user-name">Loading...</h2>
+        <p id="user-email"></p>
+      </section>
+      <div>
+        <section class="content-card">
+          <h2>Saved Programmes</h2>
+          <div class="grid-3" id="saved-programmes" style="grid-template-columns: 1fr;">
+            <p class="data-message">Loading saved programmes...</p>
+          </div>
+        </section>
+        <section class="content-card">
+          <h2>Available Funding</h2>
+          <div class="dashboard-funding-list" id="dashboard-bursaries" aria-live="polite">
+            <p class="data-message">Loading funding opportunities...</p>
+          </div>
+        </section>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-bottom"><span>© 2026 UHELP. All rights reserved.</span></div>
+  </div>
+</footer>
+<script src="js/main.js"></script>
+<script src="js/dashboard.js"></script>
+</body>
+</html>

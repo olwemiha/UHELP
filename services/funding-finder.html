@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Funding Finder — UHELP</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+<header class="site-nav">
+  <a href="../index.html" class="brand">UHELP</a>
+  <nav class="nav-links" id="nav-links">
+    <a href="../index.html">Home</a>
+    <a href="../about.html">About</a>
+    <a href="../programmes.html">Programmes</a>
+    <a href="../institutions.html">Institutions</a>
+    <a href="funding-finder.html" class="active">Our Services</a>
+    <a href="../bursaries.html">Bursaries</a>
+    <a href="../contact.html">Contact</a>
+  </nav>
+  <div class="nav-actions">
+    <a href="../auth/login.html" class="btn-login">Log In</a>
+    <a href="../auth/signup.html" class="btn-primary">Get Started</a>
+    <button class="menu-toggle" id="menu-toggle" type="button" aria-label="Toggle navigation">☰</button>
+  </div>
+</header>
+
+<main class="page-padding">
+  <div class="container">
+    <div class="section-header">
+      <h1>Funding Finder</h1>
+      <p>Search active bursaries and other listed funding opportunities by name, provider or study field.</p>
+    </div>
+    <form id="funding-form" class="tool-form">
+      <label for="funding-query">Study field, provider or opportunity</label>
+      <input id="funding-query" name="q" type="search" maxlength="100" placeholder="e.g. engineering, teaching, NSFAS" required>
+      <button type="submit" class="btn-primary">Find funding</button>
+      <p id="funding-status" role="status" aria-live="polite">Enter a search term to find funding opportunities.</p>
+    </form>
+    <div class="grid-3" id="funding-results"></div>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-bottom"><span>© 2026 UHELP. All rights reserved.</span></div>
+  </div>
+</footer>
+<script src="../js/main.js"></script>
+<script src="../js/funding.js"></script>
+</body>
+</html>
